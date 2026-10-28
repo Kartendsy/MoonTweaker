@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "moontweaker",
+    "name": "MoonTweaker",
+    "description": "Server-side Lua scripting for Minecraft 1.12.2: modify recipes from any mod with a sandboxed Lua runtime.",
+    "version": "0.1.0",
+    "mcversion": "1.12.2",
+    "authorList": ["Kartendsy"],
+    "url": "",
+    "updateUrl": "",
+    "credits": "Kartendsy",
+    "logoFile": "logo.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

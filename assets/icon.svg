@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1226"/>
+      <stop offset="0.55" stop-color="#17224a"/>
+      <stop offset="1" stop-color="#2a3a72"/>
+    </linearGradient>
+    <linearGradient id="moon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf5"/>
+      <stop offset="1" stop-color="#cfe0ff"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6ff0ff"/>
+      <stop offset="1" stop-color="#3f8cff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#6ff0ff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#6ff0ff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="crescent">
+      <rect width="512" height="512" fill="#000"/>
+      <circle cx="246" cy="246" r="146" fill="#fff"/>
+      <circle cx="312" cy="204" r="126" fill="#000"/>
+    </mask>
+  </defs>
+
+  <rect x="8" y="8" width="496" height="496" rx="104" fill="url(#bg)"/>
+  <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="4"/>
+
+  <circle cx="256" cy="256" r="210" fill="url(#glow)" opacity="0.55"/>
+
+  <g fill="#ffffff">
+    <circle cx="112" cy="130" r="4" opacity="0.75"/>
+    <circle cx="152" cy="88" r="2.5" opacity="0.5"/>
+    <circle cx="398" cy="126" r="3.5" opacity="0.65"/>
+    <circle cx="418" cy="352" r="2.5" opacity="0.45"/>
+    <circle cx="96" cy="330" r="3" opacity="0.5"/>
+  </g>
+
+  <g transform="rotate(-24 256 256)">
+    <ellipse cx="256" cy="256" rx="206" ry="86" fill="none" stroke="url(#ring)" stroke-width="10" opacity="0.9"/>
+    <circle cx="452" cy="256" r="13" fill="#6ff0ff"/>
+    <circle cx="452" cy="256" r="22" fill="#6ff0ff" opacity="0.18"/>
+  </g>
+
+  <rect width="512" height="512" fill="url(#moon)" mask="url(#crescent)"/>
+
+  <g transform="translate(360 352)">
+    <path d="M0 -22 L6 -6 L22 0 L6 6 L0 22 L-6 6 L-22 0 L-6 -6 Z" fill="#ffd166"/>
+  </g>
+</svg>
