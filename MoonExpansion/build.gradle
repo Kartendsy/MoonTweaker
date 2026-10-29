@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '2.4.10'
+    id 'com.gtnewhorizons.retrofuturagradle' version '2.0.2'
+}
+
+group = 'com.moonexpansion'
+version = '0.1.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+}
+
+kotlin {
+    jvmToolchain(8)
+}
+
+minecraft {
+    mcVersion.set('1.12.2')
+    username.set('Developer')
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.cleanroommc.com' }
+    maven { url = 'https://nexus.gtnewhorizons.com/repository/public/' }
+}
+
+dependencies {
+    implementation 'io.github.chaosunity.forgelin:Forgelin-Continuous:2.4.10.0'
+    compileOnly files('libs/MoonTweaker-0.1.0-dev.jar')
+    compileOnly 'org.luaj:luaj-jse:3.0.1'
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/MANIFEST.MF'
+    from('LICENSE')
+    from('NOTICE')
+}
+
+tasks.configureEach {
+    if (name == 'compileInjectedTagsKotlin' || name == 'compileInjectedTagsJava') {
+        dependsOn 'injectTags'
+    }
+    if (name.startsWith('compilePatchedMc')) {
+        dependsOn 'decompressDecompiledSources'
+    }
+    if (name.startsWith('compileMcLauncher')) {
+        dependsOn 'createMcLauncherFiles'
+    }
+}

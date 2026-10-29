@@ -1,7 +1,11 @@
 package com.moontweaker.script
 
+import com.moontweaker.api.MoonTweakerApi
 import com.moontweaker.event.EventApi
+import com.moontweaker.expansion.ExpansionApi
+import com.moontweaker.loot.LootApi
 import com.moontweaker.lua.RecipeApi
+import com.moontweaker.registry.RegistryApi
 import net.minecraftforge.fml.common.Loader
 import org.apache.logging.log4j.Logger
 import org.luaj.vm2.Globals
@@ -42,6 +46,8 @@ class ScriptManager(private val logger: Logger) {
 
     fun loadStartup() = load("startup")
 
+    fun loadRegistry() = load("registry")
+
     fun loadServer() = load("server")
 
     fun reload() {
@@ -53,7 +59,15 @@ class ScriptManager(private val logger: Logger) {
 
     private fun load(stage: String) {
         modules.clear()
-        if (stage == "server") EventApi.clear()
+        MoonTweakerApi.currentStage = stage
+        when (stage) {
+            "registry" -> RegistryApi.reset()
+            "server" -> {
+                EventApi.clear()
+                LootApi.reset()
+                ExpansionApi.reset()
+            }
+        }
         val dir = File(scriptDir(), stage)
         if (!dir.isDirectory) {
             dir.mkdirs()
@@ -113,13 +127,16 @@ class ScriptManager(private val logger: Logger) {
         })
         RecipeApi.install(g, logger, this)
         EventApi.install(g, logger)
+        LootApi.install(g)
+        RegistryApi.install(g)
+        ExpansionApi.install(g)
         return g
     }
 
     private fun requireModule(g: Globals, name: String): LuaValue {
         modules[name]?.let { return it }
         val rel = name.replace('.', '/') + ".lua"
-        val root = File(scriptDir(), "server").canonicalFile
+        val root = File(scriptDir(), MoonTweakerApi.currentStage).canonicalFile
         val file = File(root, rel).canonicalFile
         if (!file.toPath().startsWith(root.toPath())) throw LuaError("invalid module: $name")
         if (!file.isFile) throw LuaError("module not found: $name")

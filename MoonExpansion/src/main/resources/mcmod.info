@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "moonexpansion",
+    "name": "MoonExpansion",
+    "description": "MoonTweaker extension: add machine recipes to Thermal Expansion, Ender IO and Immersive Engineering from Lua scripts.",
+    "version": "0.1.0",
+    "mcversion": "1.12.2",
+    "authorList": ["Kartendsy"],
+    "url": "",
+    "updateUrl": "",
+    "credits": "Kartendsy",
+    "logoFile": "logo.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

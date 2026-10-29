@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "moonregistry",
+    "name": "MoonRegistry",
+    "description": "MoonTweaker extension: register items, blocks, tools, armor and fluids from Lua startup scripts.",
+    "version": "0.1.0",
+    "mcversion": "1.12.2",
+    "authorList": ["Kartendsy"],
+    "url": "",
+    "updateUrl": "",
+    "credits": "Kartendsy",
+    "logoFile": "logo.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

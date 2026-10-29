@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "lunarloot",
+    "name": "LunarLoot",
+    "description": "MoonTweaker extension: change loot tables (dungeons, Nether fortress, villages and more) with Lua.",
+    "version": "0.1.0",
+    "mcversion": "1.12.2",
+    "authorList": ["Kartendsy"],
+    "url": "",
+    "updateUrl": "",
+    "credits": "Kartendsy",
+    "logoFile": "logo.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
